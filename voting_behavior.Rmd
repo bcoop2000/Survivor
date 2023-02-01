@@ -1,0 +1,26 @@
+---
+title: "voting_behavior"
+author: "Brian"
+date: "2023-02-01"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(readr)
+library(tidyverse)
+```
+
+
+## Research Question
+
+What factors seem to influence voting pattern amongst the jury?
+
+## Data
+
+```{r}
+contestant_table <- read_csv("contestant_table.csv")
+tribe_table <- read_csv("tribe_table.csv")
+season_table <- read_csv("season_table.csv")
+```
+
+

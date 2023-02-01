@@ -1,0 +1,44 @@
+---
+title: "predicting winners"
+author: "Brian"
+date: "2023-02-01"
+output: html_document
+---
+
+```{r}
+library(readr)
+library(tidyverse)
+library(survivoR)
+```
+
+
+## Research Question
+
+Can we predict the winner of survivor with any level of accuracy when only given some early information?
+
+## Data
+
+```{r}
+contestant_table <- read_csv("contestant_table.csv")
+tribe_table <- read_csv("tribe_table.csv")
+season_table <- read_csv("season_table.csv")
+```
+
+```{r}
+plot(contestant_table$age, contestant_table$normalized_finish)
+```
+
+
+## Method
+
+```{r}
+demographic_info_contestants = select(contestant_table, age, state, country, num_appearance, poc, african_american, asian_american, latin_american, lgbt, jewish, muslim, gender, normalized_finish)
+
+classifying = select(demographic_info_contestants, african_american, age, normalized_finish)
+
+mod1 <- lm(normalized_finish ~ . ,  data=classifying)
+summary(mod1)
+```
+
+
+
